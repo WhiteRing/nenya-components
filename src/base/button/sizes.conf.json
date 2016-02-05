@@ -1,0 +1,5 @@
+{
+  "NORMAL": "NBUTTON",
+  "SMALL":  "NBUTTON_SMALL",
+  "LARGE":  "NBUTTON_LARGE"
+}
