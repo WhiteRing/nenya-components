@@ -21,8 +21,6 @@ class AbstractNenyaComponent {
     };
   }
 
-  reducer (state) { throw TypeError('Method "reducer" should be overriden in children'); }
-
   model (state) {}
 
   controller (state) {}

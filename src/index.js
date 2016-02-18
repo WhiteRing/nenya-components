@@ -3,7 +3,7 @@
 module.exports = () => {
   return {
     AbstractComponent:  require('./component.abstract'),
-    base:               require('./base')()
-    // core:               require('./core')()
+    base:               require('./base')(),
+    core:               require('./core')()
   }
 };

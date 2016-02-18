@@ -10,13 +10,13 @@ const BUTTON_SIZES = require('./sizes.conf');
 class NenyaButton extends AbstractNenyaComponent {
 
   constructor (options) {
-    super(options);
-
-    this.options = {
+    let defaults = {
       tag: 'button',
       label: 'Button',
       size: BUTTON_SIZES.NORMAL
-    };    
+    };
+
+    super(Object.assign({}, defaults, options));
   }
 
   model () {
@@ -24,6 +24,7 @@ class NenyaButton extends AbstractNenyaComponent {
     this.tag   = m.prop(this.options.tag);
     this.label = m.prop(this.options.label);
     this.descriptor = m.prop(this.tag());
+    this.actions = {};
   }
 
   controller(args) {
@@ -37,11 +38,17 @@ class NenyaButton extends AbstractNenyaComponent {
     if (options.size != BUTTON_SIZES.NORMAL) {
       this.descriptor = m.prop(this.descriptor() + NButtonClasses[options.size]);
     }
+    
+    if (this.options.onClick) {
+      this.actions.onclick = this.options.onclick;
+    }
   }
 
   view(ctrl, args) {
     // jssStyle.attach();
-    return m(this.descriptor(), this.label());
+    var btn = m(this.descriptor(), {onclick: function(){console.log(123);}}, this.label());
+    console.log(btn);
+    return btn;
   }
 }
 
@@ -51,4 +58,3 @@ module.exports = {
   component: NenyaButton,
   sizes: BUTTON_SIZES
 }
-
